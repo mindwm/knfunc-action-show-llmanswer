@@ -1,0 +1,19 @@
+name: llmanswer
+version: 0.1.0
+digest: sha256:a45ffa2bcbd4aa048e34e1ea9a82d364293d6d288d4507a5c38d2c4f2e2e8e46
+registry: 10.20.30.11:8080
+context: cyan
+filters:
+  - all:
+      - exact:
+          type: llmanswer
+run:
+  envs:
+    - name: OTEL_EXPORTER_OTLP_ENDPOINT
+      value: http://otel-collector-opentelemetry-collector.monitoring-ng:4317
+    - name: OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+      value: http://tempo-distributor.monitoring-ng:4317/v1/traces
+    - name: LOG_LEVEL
+      value: INFO
+    - name: CONTEXT_NAME
+      value: cyan
